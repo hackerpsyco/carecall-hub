@@ -155,7 +155,10 @@ const Dashboard = () => {
               <p className="text-2xl text-muted-foreground mb-6">
                 No reminders set yet
               </p>
-              <Button className="h-16 px-8 text-xl gap-3">
+              <Button 
+                onClick={() => navigate("/medications")}
+                className="h-16 px-8 text-xl gap-3"
+              >
                 <Plus className="w-6 h-6" />
                 Add Your First Medicine
               </Button>
