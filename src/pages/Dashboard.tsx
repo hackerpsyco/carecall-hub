@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { LogOut, Plus, Mic, Heart, Clock, CheckCircle2 } from "lucide-react";
 import type { User } from "@supabase/supabase-js";
+import VoiceAssistant from "@/components/VoiceAssistant";
 
 interface Medication {
   id: string;
@@ -203,19 +204,15 @@ const Dashboard = () => {
         </Card>
 
         {/* Voice Assistant */}
-        <Card className="p-8 bg-gradient-to-br from-secondary/10 to-accent/10 border-2 text-center">
-          <Mic className="w-20 h-20 text-secondary mx-auto mb-6" />
-          <h2 className="text-4xl font-bold mb-4">Need Help?</h2>
-          <p className="text-2xl text-muted-foreground mb-8">
-            Press the button and talk to me
-          </p>
-          <Button
-            className="h-24 px-16 text-2xl bg-gradient-to-r from-secondary to-accent hover:opacity-90 transition-opacity gap-4"
-          >
-            <Mic className="w-8 h-8" />
-            Start Voice Chat
-          </Button>
-        </Card>
+        <div className="bg-gradient-to-br from-secondary/10 to-accent/10 border-2 rounded-lg p-8">
+          <div className="text-center mb-8">
+            <h2 className="text-4xl font-bold mb-4">Voice Assistant</h2>
+            <p className="text-2xl text-muted-foreground">
+              Talk to me about your medications anytime
+            </p>
+          </div>
+          <VoiceAssistant />
+        </div>
       </div>
     </div>
   );
