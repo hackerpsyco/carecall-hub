@@ -47,14 +47,14 @@ export const useVoiceCall = () => {
 
       if (tokenError) throw tokenError;
       
-      const { token, uid } = tokenData;
+      const { token, appId } = tokenData;
 
       // Join the channel
       await client.join(
-        import.meta.env.VITE_AGORA_APP_ID || "",
+        appId,
         channelName,
         token,
-        uid
+        undefined
       );
 
       // Create and publish local audio track
