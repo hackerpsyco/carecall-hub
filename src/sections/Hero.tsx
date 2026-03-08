@@ -52,7 +52,8 @@ const Hero: React.FC = () => {
               <TypeAnimation
                 sequence={[
                   'Full-Stack Developer.', 2500,
-                  'AI Enthusiast.', 2500,
+                  'AI Automation Expert.', 2500,
+                  'Content Creator.', 2500,
                   'Problem Solver.', 2500,
                 ]}
                 wrapper="span"
@@ -63,8 +64,8 @@ const Hero: React.FC = () => {
           </h1>
 
           <p className="mt-7 text-foreground-muted text-base sm:text-[17px] max-w-md leading-relaxed">
-            I design and build innovative web solutions & AI-powered applications. 
-            Turning complex problems into elegant, user-friendly experiences.
+            I build AI automation solutions for businesses, create innovative web apps, 
+            and share AI tools & automation insights on YouTube and Instagram.
           </p>
 
           {/* CTAs */}

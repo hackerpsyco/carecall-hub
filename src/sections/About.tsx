@@ -7,17 +7,17 @@ const whatIdo = [
   {
     icon: <Code2 size={20} />,
     title: 'Development',
-    content: 'Html, css, Tailwind css, Javascript, React.js, Next.js, Node.js, Express.js, Django, Python',
+    content: 'Html, CSS, Tailwind CSS, Javascript, React.js, Next.js, Node.js, Express.js, Django, Python',
   },
   {
     icon: <Lightbulb size={20} />,
-    title: 'AI & Innovation',
-    content: 'Machine Learning, Scikit-learn, FastAPI, AI-powered applications, Problem solving',
+    title: 'AI & Automation',
+    content: 'AI-powered automation for businesses, chatbots, workflow automation, ML models, FastAPI, Scikit-learn',
   },
   {
     icon: <GraduationCap size={20} />,
-    title: 'Education',
-    content: 'Engineering student with focus on CS and AI. Hackathons, self-study, and collaborative projects.',
+    title: 'Content Creation',
+    content: 'YouTube & Instagram creator sharing AI tools, automation tutorials, and tech updates weekly.',
   },
 ];
 
@@ -35,8 +35,8 @@ const About: React.FC = () => {
           </h2>
           <p className="text-foreground-muted text-base leading-relaxed">
             This is Piyush Tamoli, engineering student from Bhopal, India. I'm a self-taught 
-            full-stack developer and AI enthusiast. I build innovative web solutions and love 
-            solving complex problems with elegant code.
+            full-stack developer, AI automation expert, and content creator. I help businesses 
+            automate with AI and share insights on YouTube & Instagram.
           </p>
         </div>
 
