@@ -6,15 +6,14 @@ import { hackathons } from '../constants';
 const Hackathons: React.FC = () => {
   return (
     <>
-      <div className="mb-16">
-        <span className="section-divider" />
-        <p className="text-xs font-mono tracking-[0.2em] uppercase text-foreground-muted mb-4">
+      <div className="mb-14">
+        <p className="text-xs font-mono tracking-[0.25em] uppercase text-foreground-muted mb-4">
           Achievements
         </p>
-        <h2 className="font-display font-bold text-foreground text-3xl sm:text-4xl tracking-tight">
-          Hackathons & Wins
+        <h2 className="font-display text-foreground text-3xl sm:text-[2.75rem] leading-tight tracking-tight">
+          Hackathons & <span className="font-bold">Wins</span>
         </h2>
-        <p className="mt-5 text-foreground-muted text-base leading-relaxed max-w-xl">
+        <p className="mt-6 text-foreground-muted text-base leading-relaxed max-w-xl">
           Sharpening skills through rapid prototyping, teamwork, and
           delivering innovative solutions under pressure.
         </p>

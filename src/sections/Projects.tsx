@@ -6,21 +6,16 @@ import { projects } from '../constants';
 const Projects: React.FC = () => {
   return (
     <>
-      <div className="mb-16">
-        <span className="section-divider" />
-        <p className="text-xs font-mono tracking-[0.2em] uppercase text-foreground-muted mb-4">
-          Latest projects
+      <div className="mb-14">
+        <p className="text-xs font-mono tracking-[0.25em] uppercase text-foreground-muted mb-4">
+          Projects
         </p>
-        <h2 className="font-display font-bold text-foreground text-3xl sm:text-4xl tracking-tight">
-          Featured Work
+        <h2 className="font-display text-foreground text-3xl sm:text-[2.75rem] leading-tight tracking-tight">
+          My <span className="font-bold">Latest Works</span>
         </h2>
-        <p className="mt-5 text-foreground-muted text-base leading-relaxed max-w-xl">
-          Real-world projects showcasing full-stack development, AI integration,
-          and end-to-end problem solving.
-        </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {projects.map((project, index) => (
           <ProjectCard key={project.id} index={index} project={project} />
         ))}

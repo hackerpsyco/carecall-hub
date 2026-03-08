@@ -14,7 +14,6 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Apply saved theme on mount
     const saved = localStorage.getItem('theme');
     if (saved === 'dark') {
       document.documentElement.classList.add('dark');
@@ -48,15 +47,10 @@ const App: React.FC = () => {
           <Navbar />
           <main>
             <Hero />
-            <div className="border-t border-border" />
             <About />
-            <div className="border-t border-border" />
             <Projects />
-            <div className="border-t border-border" />
             <Hackathons />
-            <div className="border-t border-border" />
             <TechStack />
-            <div className="border-t border-border" />
             <Contact />
           </main>
           <Footer />
