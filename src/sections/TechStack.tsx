@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+
 import SectionWrapper from '../components/SectionWrapper';
 import TechBadge from '../components/TechBadge';
 import { technologies } from '../constants';

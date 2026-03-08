@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+
 import SectionWrapper from '../components/SectionWrapper';
 import HackathonCard from '../components/HackathonCard';
 import { hackathons } from '../constants';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+
 import SectionWrapper from '../components/SectionWrapper';
 import ProjectCard from '../components/ProjectCard';
 import { projects } from '../constants';
