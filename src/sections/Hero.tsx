@@ -52,7 +52,8 @@ const Hero: React.FC = () => {
               <TypeAnimation
                 sequence={[
                   'Full-Stack Developer.', 2500,
-                  'AI Enthusiast.', 2500,
+                  'AI Automation Expert.', 2500,
+                  'Content Creator.', 2500,
                   'Problem Solver.', 2500,
                 ]}
                 wrapper="span"
