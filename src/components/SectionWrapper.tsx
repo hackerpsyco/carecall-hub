@@ -15,8 +15,8 @@ const SectionWrapper = (Component: React.FC, idName: string) =>
           ref={ref}
           initial={{ opacity: 0, y: 40 }}
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="px-6 py-20 md:py-28 max-w-6xl mx-auto"
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="px-6 py-24 md:py-32 max-w-5xl mx-auto"
         >
           <Component />
         </motion.div>

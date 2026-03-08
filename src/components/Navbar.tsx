@@ -22,24 +22,21 @@ const Navbar: React.FC = () => {
       transition={{ duration: 0.6, ease: 'easeOut' }}
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-background/80 backdrop-blur-xl border-b border-border/50 py-3'
+          ? 'bg-background/90 backdrop-blur-md border-b border-border py-3'
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+      <div className="max-w-5xl mx-auto px-6 flex justify-between items-center">
         <motion.div
           whileHover={{ scale: 1.02 }}
           onClick={() => {
             setActive('');
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="flex items-center gap-2.5 cursor-pointer"
+          className="cursor-pointer"
         >
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-sm">PT</span>
-          </div>
-          <span className="font-display font-semibold text-foreground text-lg tracking-tight">
-            Piyush<span className="text-primary ml-0.5">.</span>
+          <span className="font-display font-bold text-foreground text-xl tracking-tight">
+            Piyush<span className="text-foreground-muted">.</span>
           </span>
         </motion.div>
 
@@ -52,22 +49,22 @@ const Navbar: React.FC = () => {
                   setActive(nav.title);
                   document.getElementById(nav.id)?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                className={`px-3 py-1.5 rounded-md text-[13px] font-medium transition-all duration-200 ${
                   active === nav.title
-                    ? 'text-primary bg-primary/10'
-                    : 'text-foreground-muted hover:text-foreground hover:bg-muted/50'
+                    ? 'text-foreground'
+                    : 'text-foreground-muted hover:text-foreground'
                 }`}
               >
                 {nav.title}
               </button>
             </li>
           ))}
-          <li>
+          <li className="ml-3">
             <a
               href="https://drive.google.com/file/d/1dapNQSWmEozta4VCf0_zQzlSjFgDBtxH/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+              className="px-5 py-2 rounded-full bg-foreground text-background text-[13px] font-semibold hover:opacity-80 transition-opacity"
             >
               Resume
             </a>
@@ -77,23 +74,25 @@ const Navbar: React.FC = () => {
           </li>
         </ul>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground p-2"
-          onClick={() => setToggle(!toggle)}
-        >
-          {toggle ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile */}
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            className="text-foreground p-2"
+            onClick={() => setToggle(!toggle)}
+          >
+            {toggle ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
 
-        {/* Mobile menu */}
         <AnimatePresence>
           {toggle && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border/50 p-6 md:hidden"
+              className="absolute top-full left-0 right-0 bg-background border-b border-border p-6 md:hidden"
             >
               <ul className="flex flex-col gap-1">
                 {navLinks.map((nav) => (
@@ -106,26 +105,23 @@ const Navbar: React.FC = () => {
                       }}
                       className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                         active === nav.title
-                          ? 'text-primary bg-primary/10'
-                          : 'text-foreground-muted hover:text-foreground hover:bg-muted/50'
+                          ? 'text-foreground bg-muted'
+                          : 'text-foreground-muted hover:text-foreground'
                       }`}
                     >
                       {nav.title}
                     </button>
                   </li>
                 ))}
-                <li className="mt-2">
+                <li className="mt-3">
                   <a
                     href="https://drive.google.com/file/d/1dapNQSWmEozta4VCf0_zQzlSjFgDBtxH/view?usp=sharing"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-center px-5 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold"
+                    className="block text-center px-5 py-3 rounded-full bg-foreground text-background text-sm font-semibold"
                   >
                     Resume
                   </a>
-                </li>
-                <li className="mt-3 flex justify-center">
-                  <ThemeToggle />
                 </li>
               </ul>
             </motion.div>

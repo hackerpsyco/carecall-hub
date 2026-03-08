@@ -5,19 +5,19 @@ import { TechSkill } from '../types';
 const TechBadge: React.FC<{ skill: TechSkill; index: number }> = ({ skill, index }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ delay: index * 0.05, duration: 0.3 }}
-      whileHover={{ y: -4, scale: 1.05 }}
-      className="glass-card rounded-xl p-4 flex flex-col items-center gap-3 hover:border-primary/30 transition-all duration-300 cursor-default"
+      transition={{ delay: index * 0.04, duration: 0.3 }}
+      whileHover={{ y: -3 }}
+      className="clean-card rounded-lg p-4 flex flex-col items-center gap-2.5 cursor-default"
     >
       <img
         src={skill.icon}
         alt={skill.name}
-        className="w-10 h-10 object-contain"
+        className="w-8 h-8 object-contain"
         loading="lazy"
       />
-      <span className="text-foreground text-xs font-medium text-center leading-tight">{skill.name}</span>
+      <span className="text-foreground text-[11px] font-medium text-center leading-tight">{skill.name}</span>
     </motion.div>
   );
 };

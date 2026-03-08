@@ -4,23 +4,18 @@ import { navLinks } from '../constants';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-border/50 bg-background">
-      <div className="max-w-6xl mx-auto px-6 py-16">
+    <footer className="border-t border-border bg-background">
+      <div className="max-w-5xl mx-auto px-6 py-16">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-display font-bold text-sm">PT</span>
-              </div>
-              <span className="font-display font-semibold text-foreground text-lg tracking-tight">
-                Piyush<span className="text-primary ml-0.5">.</span>
-              </span>
-            </div>
-            <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-xs">
+            <span className="font-display font-bold text-foreground text-xl tracking-tight">
+              Piyush<span className="text-foreground-muted">.</span>
+            </span>
+            <p className="text-foreground-muted text-sm leading-relaxed mt-4 max-w-xs">
               Engineering student building innovative solutions through AI, web development, and modern technology.
             </p>
-            <div className="flex gap-3">
+            <div className="flex gap-2 mt-5">
               {[
                 { icon: Github, href: 'https://github.com/Piyush105454' },
                 { icon: Linkedin, href: 'https://www.linkedin.com/in/piyush-tamoli-751b2125a' },
@@ -31,15 +26,15 @@ const Footer: React.FC = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
+                  className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-foreground-muted hover:text-foreground hover:border-foreground/30 transition-all"
                 >
-                  <Icon size={18} />
+                  <Icon size={14} />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
             <h3 className="font-display font-semibold text-foreground text-sm mb-4">Navigation</h3>
             <ul className="space-y-2.5">
@@ -47,7 +42,7 @@ const Footer: React.FC = () => {
                 <li key={link.id}>
                   <button
                     onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
-                    className="text-muted-foreground text-sm hover:text-foreground transition-colors"
+                    className="text-foreground-muted text-sm hover:text-foreground transition-colors"
                   >
                     {link.title}
                   </button>
@@ -59,7 +54,7 @@ const Footer: React.FC = () => {
           {/* Contact */}
           <div>
             <h3 className="font-display font-semibold text-foreground text-sm mb-4">Contact</h3>
-            <div className="space-y-2.5 text-sm text-muted-foreground">
+            <div className="space-y-2.5 text-sm text-foreground-muted">
               <p>Bhopal, Madhya Pradesh, India</p>
               <a href="mailto:piyushtamoli105454@gmail.com" className="block hover:text-foreground transition-colors">
                 piyushtamoli105454@gmail.com
@@ -68,8 +63,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-border/50 text-center">
-          <p className="text-muted-foreground text-xs">
+        <div className="pt-8 border-t border-border text-center">
+          <p className="text-foreground-muted text-xs">
             © {new Date().getFullYear()} Piyush Tamoli. Crafted with passion.
           </p>
         </div>

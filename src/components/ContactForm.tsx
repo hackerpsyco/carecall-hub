@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -21,12 +21,12 @@ const ContactForm: React.FC = () => {
   };
 
   const inputClasses =
-    'w-full bg-muted/50 border border-border rounded-xl px-4 py-3 text-foreground text-sm placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200';
+    'w-full bg-transparent border-b border-border px-0 py-3 text-foreground text-sm placeholder:text-muted-foreground outline-none focus:border-foreground transition-colors duration-300';
 
   return (
-    <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-8">
       <div>
-        <label className="block text-foreground text-sm font-medium mb-2">Name</label>
+        <label className="block text-foreground-muted text-xs font-mono tracking-wider uppercase mb-2">Name</label>
         <input
           type="text"
           name="name"
@@ -39,7 +39,7 @@ const ContactForm: React.FC = () => {
       </div>
 
       <div>
-        <label className="block text-foreground text-sm font-medium mb-2">Email</label>
+        <label className="block text-foreground-muted text-xs font-mono tracking-wider uppercase mb-2">Email</label>
         <input
           type="email"
           name="email"
@@ -52,7 +52,7 @@ const ContactForm: React.FC = () => {
       </div>
 
       <div>
-        <label className="block text-foreground text-sm font-medium mb-2">Message</label>
+        <label className="block text-foreground-muted text-xs font-mono tracking-wider uppercase mb-2">Message</label>
         <textarea
           rows={4}
           name="message"
@@ -65,14 +65,14 @@ const ContactForm: React.FC = () => {
       </div>
 
       <motion.button
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.99 }}
         type="submit"
         disabled={loading}
-        className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors disabled:opacity-60"
+        className="px-8 py-3.5 rounded-full bg-foreground text-background font-semibold text-sm flex items-center gap-2 hover:opacity-85 transition-opacity disabled:opacity-50"
       >
         {loading ? 'Sending...' : 'Send Message'}
-        <Send size={16} />
+        <ArrowUpRight size={16} />
       </motion.button>
     </form>
   );

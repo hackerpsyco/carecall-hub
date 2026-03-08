@@ -5,56 +5,54 @@ import { Code2, Lightbulb, GraduationCap } from 'lucide-react';
 
 const cards = [
   {
-    icon: <Code2 size={24} className="text-primary" />,
-    title: 'Technical Skills',
-    content: 'Proficient in Python, JavaScript, React.js, Node.js and various AI/ML frameworks. Continuously expanding my skillset through hands-on projects.',
-    accent: 'primary',
+    icon: <Code2 size={22} />,
+    title: 'Development',
+    content: 'Proficient in Python, JavaScript, React.js, Node.js and various AI/ML frameworks. Building production-ready applications.',
   },
   {
-    icon: <Lightbulb size={24} className="text-accent" />,
-    title: 'Innovation & Creativity',
-    content: 'I approach engineering challenges with a creative mindset, combining technical expertise with practical applications to build unique solutions.',
-    accent: 'accent',
+    icon: <Lightbulb size={22} />,
+    title: 'Innovation',
+    content: 'Creative approach to engineering, combining technical expertise with practical solutions for real-world problems.',
   },
   {
-    icon: <GraduationCap size={24} className="text-highlight" />,
-    title: 'Education & Learning',
-    content: 'Pursuing engineering with a focus on CS and AI. Supplementing formal education with hackathons, self-learning, and collaborative projects.',
-    accent: 'highlight',
+    icon: <GraduationCap size={22} />,
+    title: 'Education',
+    content: 'Pursuing engineering with focus on CS and AI. Learning through hackathons, self-study, and collaborative projects.',
   },
 ];
 
 const About: React.FC = () => {
   return (
     <>
-      <div className="mb-12">
-        <p className="text-sm font-mono font-medium text-primary tracking-wider uppercase mb-3">
-          Introduction
+      <div className="mb-16">
+        <span className="section-divider" />
+        <p className="text-xs font-mono tracking-[0.2em] uppercase text-foreground-muted mb-4">
+          About me
         </p>
         <h2 className="font-display font-bold text-foreground text-3xl sm:text-4xl tracking-tight">
-          Who Am I?
+          A small introduction
         </h2>
-        <p className="mt-4 text-muted-foreground text-base leading-relaxed max-w-2xl">
-          I'm an engineering student with a passion for cutting-edge technology and problem-solving. 
-          Fascinated by AI, web development, and creating innovative applications that turn complex 
-          problems into elegant, user-friendly solutions.
+        <p className="mt-5 text-foreground-muted text-base leading-relaxed max-w-xl">
+          I'm an engineering student passionate about cutting-edge technology.
+          Fascinated by AI, web development, and creating applications that solve
+          real problems with elegant, user-friendly solutions.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-5">
+      <div className="grid md:grid-cols-3 gap-6">
         {cards.map((card, i) => (
           <motion.div
             key={card.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.15, duration: 0.5 }}
-            className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 group"
+            transition={{ delay: i * 0.12, duration: 0.5 }}
+            className="clean-card rounded-xl p-7 group"
           >
-            <div className="w-12 h-12 rounded-xl bg-muted/80 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center mb-5 text-foreground group-hover:bg-foreground group-hover:text-background transition-all duration-300">
               {card.icon}
             </div>
-            <h3 className="font-display font-semibold text-foreground text-lg mb-2">{card.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{card.content}</p>
+            <h3 className="font-display font-semibold text-foreground text-base mb-2">{card.title}</h3>
+            <p className="text-foreground-muted text-sm leading-relaxed">{card.content}</p>
           </motion.div>
         ))}
       </div>
