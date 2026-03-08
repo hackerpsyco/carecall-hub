@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+
 import SectionWrapper from '../components/SectionWrapper';
 import ContactForm from '../components/ContactForm';
 import { Mail, MapPin, Github, Linkedin, Instagram } from 'lucide-react';
