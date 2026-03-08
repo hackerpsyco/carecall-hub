@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { navLinks } from '../constants';
+import ThemeToggle from './ThemeToggle';
 
 const Navbar: React.FC = () => {
   const [active, setActive] = useState<string>('');
@@ -71,6 +72,9 @@ const Navbar: React.FC = () => {
               Resume
             </a>
           </li>
+          <li className="ml-2">
+            <ThemeToggle />
+          </li>
         </ul>
 
         {/* Mobile toggle */}
@@ -119,6 +123,9 @@ const Navbar: React.FC = () => {
                   >
                     Resume
                   </a>
+                </li>
+                <li className="mt-3 flex justify-center">
+                  <ThemeToggle />
                 </li>
               </ul>
             </motion.div>

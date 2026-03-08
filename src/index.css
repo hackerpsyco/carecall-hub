@@ -23,6 +23,30 @@
   --muted-foreground: 0 0% 60%;
 }
 
+.light {
+  --background: 0 0% 98%;
+  --background-light: 0 0% 95%;
+  --foreground: 240 20% 12%;
+  --foreground-muted: 240 10% 40%;
+  --primary: 210 100% 45%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 150 80% 35%;
+  --accent-foreground: 0 0% 100%;
+  --highlight: 336 90% 50%;
+  --highlight-foreground: 0 0% 100%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 20% 12%;
+  --border: 240 10% 88%;
+  --ring: 210 100% 45%;
+  --muted: 240 10% 93%;
+  --muted-foreground: 240 10% 45%;
+}
+
+/* Smooth theme transition */
+*, *::before, *::after {
+  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -81,6 +105,11 @@ code, .font-mono {
   background: hsl(var(--card) / 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid hsl(var(--border) / 0.5);
+}
+
+.light .glass-card {
+  background: hsl(var(--card) / 0.8);
+  box-shadow: 0 1px 3px hsl(0 0% 0% / 0.06);
 }
 
 .glow-primary {
