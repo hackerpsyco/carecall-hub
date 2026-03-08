@@ -43,7 +43,7 @@ const ContentCreator: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              href="https://youtube.com/@piyushtamoli"
+              href="https://www.youtube.com/@innoalaxy/shorts"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2.5 px-5 py-3 rounded-full bg-foreground text-background font-semibold text-sm hover:opacity-85 transition-opacity"
@@ -54,7 +54,7 @@ const ContentCreator: React.FC = () => {
             <motion.a
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              href="https://www.instagram.com/piyush_tamoli/?hl=en"
+              href="https://www.instagram.com/innoalaxy.in/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2.5 px-5 py-3 rounded-full border border-border text-foreground font-medium text-sm hover:border-foreground/40 transition-colors"
