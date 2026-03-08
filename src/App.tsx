@@ -14,7 +14,12 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 800);
+    // Apply saved theme on mount
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+    const timer = setTimeout(() => setLoading(false), 600);
     return () => clearTimeout(timer);
   }, []);
 
@@ -29,7 +34,7 @@ const App: React.FC = () => {
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-            className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full"
+            className="w-6 h-6 border-2 border-foreground border-t-transparent rounded-full"
           />
         </motion.div>
       ) : (
@@ -43,10 +48,15 @@ const App: React.FC = () => {
           <Navbar />
           <main>
             <Hero />
+            <div className="border-t border-border" />
             <About />
+            <div className="border-t border-border" />
             <Projects />
+            <div className="border-t border-border" />
             <Hackathons />
+            <div className="border-t border-border" />
             <TechStack />
+            <div className="border-t border-border" />
             <Contact />
           </main>
           <Footer />

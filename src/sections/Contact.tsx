@@ -5,40 +5,40 @@ import ContactForm from '../components/ContactForm';
 import { Mail, MapPin, Github, Linkedin, Instagram } from 'lucide-react';
 
 const socials = [
-  { name: 'GitHub', icon: <Github size={20} />, link: 'https://github.com/Piyush105454' },
-  { name: 'LinkedIn', icon: <Linkedin size={20} />, link: 'https://www.linkedin.com/in/piyush-tamoli-751b2125a' },
-  { name: 'Instagram', icon: <Instagram size={20} />, link: 'https://www.instagram.com/piyush_tamoli/' },
+  { name: 'GitHub', icon: <Github size={16} />, link: 'https://github.com/Piyush105454' },
+  { name: 'LinkedIn', icon: <Linkedin size={16} />, link: 'https://www.linkedin.com/in/piyush-tamoli-751b2125a' },
+  { name: 'Instagram', icon: <Instagram size={16} />, link: 'https://www.instagram.com/piyush_tamoli/' },
 ];
 
 const Contact: React.FC = () => {
   return (
     <>
-      <div className="mb-12">
-        <p className="text-sm font-mono font-medium text-primary tracking-wider uppercase mb-3">
-          Get in Touch
+      <div className="mb-16">
+        <span className="section-divider" />
+        <p className="text-xs font-mono tracking-[0.2em] uppercase text-foreground-muted mb-4">
+          Get in touch
         </p>
         <h2 className="font-display font-bold text-foreground text-3xl sm:text-4xl tracking-tight">
           Let's Talk
         </h2>
-        <p className="mt-4 text-muted-foreground text-base leading-relaxed max-w-2xl">
-          Have a project in mind or want to collaborate? I'm always open to discussing 
-          new ideas and opportunities.
+        <p className="mt-5 text-foreground-muted text-base leading-relaxed max-w-xl">
+          Have a project in mind? I'm always open to discussing new ideas and opportunities.
         </p>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-10">
-        {/* Info side */}
-        <div className="space-y-6">
-          <div className="glass-card rounded-2xl p-6 space-y-5">
+      <div className="grid lg:grid-cols-2 gap-16">
+        {/* Info */}
+        <div className="space-y-8">
+          <div className="space-y-6">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Mail size={18} className="text-primary" />
+              <div className="w-9 h-9 rounded-full border border-border flex items-center justify-center flex-shrink-0">
+                <Mail size={15} className="text-foreground-muted" />
               </div>
               <div>
                 <h4 className="font-display font-medium text-foreground text-sm mb-1">Email</h4>
                 <a
                   href="mailto:piyushtamoli105454@gmail.com"
-                  className="text-muted-foreground text-sm hover:text-primary transition-colors"
+                  className="text-foreground-muted text-sm hover:text-foreground transition-colors"
                 >
                   piyushtamoli105454@gmail.com
                 </a>
@@ -46,27 +46,27 @@ const Contact: React.FC = () => {
             </div>
 
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <MapPin size={18} className="text-primary" />
+              <div className="w-9 h-9 rounded-full border border-border flex items-center justify-center flex-shrink-0">
+                <MapPin size={15} className="text-foreground-muted" />
               </div>
               <div>
                 <h4 className="font-display font-medium text-foreground text-sm mb-1">Location</h4>
-                <p className="text-muted-foreground text-sm">Bhopal, Madhya Pradesh, India</p>
+                <p className="text-foreground-muted text-sm">Bhopal, Madhya Pradesh, India</p>
               </div>
             </div>
           </div>
 
           <div>
-            <h3 className="font-display font-semibold text-foreground text-sm mb-4">Connect</h3>
-            <div className="flex gap-3">
+            <h3 className="font-display font-medium text-foreground text-sm mb-4">Follow me</h3>
+            <div className="flex gap-2">
               {socials.map((social) => (
                 <motion.a
                   key={social.name}
-                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileHover={{ y: -2 }}
                   href={social.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-xl bg-muted/50 text-foreground-muted hover:text-foreground hover:bg-muted transition-all"
+                  className="w-9 h-9 rounded-full border border-border flex items-center justify-center text-foreground-muted hover:text-foreground hover:border-foreground/30 transition-all"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
 
-        {/* Form side */}
+        {/* Form */}
         <ContactForm />
       </div>
     </>

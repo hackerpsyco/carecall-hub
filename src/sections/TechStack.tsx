@@ -1,29 +1,29 @@
 import React from 'react';
-
 import SectionWrapper from '../components/SectionWrapper';
 import TechBadge from '../components/TechBadge';
 import { technologies } from '../constants';
 
 const categories = [
-  { id: 'frontend', title: 'Frontend', color: 'text-primary' },
-  { id: 'backend', title: 'Backend', color: 'text-accent' },
-  { id: 'ai', title: 'AI & ML', color: 'text-highlight' },
-  { id: 'tools', title: 'Tools & DevOps', color: 'text-foreground-muted' },
+  { id: 'frontend', title: 'Frontend Development' },
+  { id: 'backend', title: 'Backend Development' },
+  { id: 'ai', title: 'AI & Machine Learning' },
+  { id: 'tools', title: 'Tools & DevOps' },
 ];
 
 const TechStack: React.FC = () => {
   return (
     <>
-      <div className="mb-12">
-        <p className="text-sm font-mono font-medium text-primary tracking-wider uppercase mb-3">
-          Technologies
+      <div className="mb-16">
+        <span className="section-divider" />
+        <p className="text-xs font-mono tracking-[0.2em] uppercase text-foreground-muted mb-4">
+          Tools & tech
         </p>
         <h2 className="font-display font-bold text-foreground text-3xl sm:text-4xl tracking-tight">
-          Tech Stack
+          My Personal Favourite
         </h2>
-        <p className="mt-4 text-muted-foreground text-base leading-relaxed max-w-2xl">
-          A comprehensive look at the technologies I work with — from frontend 
-          frameworks to backend systems and AI tooling.
+        <p className="mt-5 text-foreground-muted text-base leading-relaxed max-w-xl">
+          Technologies I work with daily — from frontend frameworks to backend
+          systems and AI tooling.
         </p>
       </div>
 
@@ -33,10 +33,10 @@ const TechStack: React.FC = () => {
           if (techs.length === 0) return null;
           return (
             <div key={category.id}>
-              <h3 className={`font-display font-semibold text-lg mb-5 ${category.color}`}>
+              <h3 className="font-display font-semibold text-sm text-foreground-muted mb-5 tracking-wide">
                 {category.title}
               </h3>
-              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-3">
                 {techs.map((tech, index) => (
                   <TechBadge key={tech.id} skill={tech} index={index} />
                 ))}
