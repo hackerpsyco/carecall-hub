@@ -24,35 +24,34 @@ const cards = [
 const About: React.FC = () => {
   return (
     <>
-      <div className="mb-16">
-        <span className="section-divider" />
-        <p className="text-xs font-mono tracking-[0.2em] uppercase text-foreground-muted mb-4">
+      <div className="mb-14">
+        <p className="text-xs font-mono tracking-[0.25em] uppercase text-foreground-muted mb-4">
           About me
         </p>
-        <h2 className="font-display font-bold text-foreground text-3xl sm:text-4xl tracking-tight">
-          A small introduction
+        <h2 className="font-display text-foreground text-3xl sm:text-[2.75rem] leading-tight tracking-tight">
+          A small <span className="font-bold">Introduction</span>
         </h2>
-        <p className="mt-5 text-foreground-muted text-base leading-relaxed max-w-xl">
+        <p className="mt-6 text-foreground-muted text-base sm:text-lg leading-relaxed max-w-xl">
           I'm an engineering student passionate about cutting-edge technology.
           Fascinated by AI, web development, and creating applications that solve
           real problems with elegant, user-friendly solutions.
         </p>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-5">
         {cards.map((card, i) => (
           <motion.div
             key={card.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.12, duration: 0.5 }}
-            className="clean-card rounded-xl p-7 group"
+            className="rounded-2xl border border-border p-7 group hover:bg-foreground hover:border-foreground transition-all duration-400 cursor-default"
           >
-            <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center mb-5 text-foreground group-hover:bg-foreground group-hover:text-background transition-all duration-300">
+            <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center mb-5 text-foreground group-hover:bg-background/20 group-hover:text-background transition-all duration-400">
               {card.icon}
             </div>
-            <h3 className="font-display font-semibold text-foreground text-base mb-2">{card.title}</h3>
-            <p className="text-foreground-muted text-sm leading-relaxed">{card.content}</p>
+            <h3 className="font-display font-semibold text-foreground text-base mb-2 group-hover:text-background transition-colors duration-400">{card.title}</h3>
+            <p className="text-foreground-muted text-sm leading-relaxed group-hover:text-background/70 transition-colors duration-400">{card.content}</p>
           </motion.div>
         ))}
       </div>

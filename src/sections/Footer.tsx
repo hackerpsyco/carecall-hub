@@ -15,7 +15,7 @@ const Footer: React.FC = () => {
             <p className="text-foreground-muted text-sm leading-relaxed mt-4 max-w-xs">
               Engineering student building innovative solutions through AI, web development, and modern technology.
             </p>
-            <div className="flex gap-2 mt-5">
+            <div className="flex gap-4 mt-5">
               {[
                 { icon: Github, href: 'https://github.com/Piyush105454' },
                 { icon: Linkedin, href: 'https://www.linkedin.com/in/piyush-tamoli-751b2125a' },
@@ -26,9 +26,9 @@ const Footer: React.FC = () => {
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-foreground-muted hover:text-foreground hover:border-foreground/30 transition-all"
+                  className="text-foreground-muted hover:text-foreground transition-colors"
                 >
-                  <Icon size={14} />
+                  <Icon size={18} />
                 </a>
               ))}
             </div>

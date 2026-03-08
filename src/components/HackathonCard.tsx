@@ -13,16 +13,16 @@ const HackathonCard: React.FC<{
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.15, duration: 0.5 }}
-      className="clean-card rounded-xl p-6 flex gap-5 items-start"
+      className="rounded-2xl border border-border p-6 flex gap-5 items-start hover:border-foreground/20 transition-all duration-300 group"
     >
-      <div className="w-11 h-11 rounded-lg bg-muted flex items-center justify-center flex-shrink-0">
-        <Trophy size={20} className="text-foreground" />
+      <div className="w-11 h-11 rounded-xl bg-foreground flex items-center justify-center flex-shrink-0 group-hover:scale-105 transition-transform">
+        <Trophy size={18} className="text-background" />
       </div>
 
       <div className="flex-1 min-w-0">
         <div className="flex flex-wrap items-center gap-3 mb-1.5">
-          <h3 className="font-display font-semibold text-foreground text-base">{hackathon.title}</h3>
-          <span className="text-[11px] font-mono font-semibold px-2.5 py-1 rounded-full bg-foreground text-background">
+          <h3 className="font-display font-bold text-foreground text-base">{hackathon.title}</h3>
+          <span className="text-[11px] font-mono font-semibold px-3 py-1 rounded-full bg-foreground text-background">
             {hackathon.position}
           </span>
         </div>
@@ -31,7 +31,7 @@ const HackathonCard: React.FC<{
           <span>{hackathon.date}</span>
           {hackathon.team && (
             <>
-              <span className="text-border">•</span>
+              <span>·</span>
               <span>Team {hackathon.team}</span>
             </>
           )}
