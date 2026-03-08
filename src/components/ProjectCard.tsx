@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Project } from '../types';
-import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { Github, ArrowUpRight } from 'lucide-react';
 
 const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
   return (
