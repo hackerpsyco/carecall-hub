@@ -17,8 +17,9 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
+    if (!saved || saved === 'dark') {
       document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     }
     const timer = setTimeout(() => setLoading(false), 600);
     return () => clearTimeout(timer);
