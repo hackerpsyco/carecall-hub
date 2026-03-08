@@ -8,8 +8,8 @@ const ParticlesBackground: React.FC = () => {
     await loadSlim(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container: Container | undefined) => {
-    await console.log(container);
+  const particlesLoaded = useCallback(async (_container: Container | undefined) => {
+    // loaded
   }, []);
 
   return (
@@ -18,70 +18,41 @@ const ParticlesBackground: React.FC = () => {
       init={particlesInit}
       loaded={particlesLoaded}
       options={{
-        fpsLimit: 120,
+        fpsLimit: 60,
         interactivity: {
           events: {
-            onClick: {
-              enable: true,
-              mode: "push",
-            },
-            onHover: {
-              enable: true,
-              mode: "repulse",
-            },
+            onHover: { enable: true, mode: 'grab' },
             resize: true,
           },
           modes: {
-            push: {
-              quantity: 4,
-            },
-            repulse: {
-              distance: 100,
-              duration: 0.4,
-            },
+            grab: { distance: 140, links: { opacity: 0.3 } },
           },
         },
         particles: {
-          color: {
-            value: ["#1E90FF", "#39FF14", "#FF2E8D"],
-          },
+          color: { value: '#3b82f6' },
           links: {
-            color: "#1E90FF",
-            distance: 150,
+            color: '#3b82f6',
+            distance: 160,
             enable: true,
-            opacity: 0.5,
+            opacity: 0.12,
             width: 1,
           },
           move: {
-            direction: "none",
             enable: true,
-            outModes: {
-              default: "bounce",
-            },
-            random: false,
-            speed: 1,
-            straight: false,
+            speed: 0.5,
+            outModes: { default: 'out' },
           },
           number: {
-            density: {
-              enable: true,
-              area: 800,
-            },
-            value: 80,
+            density: { enable: true, area: 1200 },
+            value: 40,
           },
-          opacity: {
-            value: 0.5,
-          },
-          shape: {
-            type: "circle",
-          },
-          size: {
-            value: { min: 1, max: 3 },
-          },
+          opacity: { value: 0.15 },
+          shape: { type: 'circle' },
+          size: { value: { min: 1, max: 2 } },
         },
         detectRetina: true,
       }}
-      className="absolute inset-0 z-[-1]"
+      className="absolute inset-0 z-0"
     />
   );
 };

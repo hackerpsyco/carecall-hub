@@ -1,96 +1,77 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail } from 'lucide-react';
 import { navLinks } from '../constants';
-import { ChevronRight, Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0f0f2d] pt-20 pb-8">
-      <div className="max-w-7xl mx-auto sm:px-16 px-6">
-        <div className="flex flex-col md:flex-row justify-between gap-10 mb-10">
-          <div className="md:w-1/3">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className='flex items-center gap-2 mb-4'
-            >
-              <div className='w-10 h-10 rounded-full bg-[#1E90FF] flex justify-center items-center'>
-                <span className='text-white font-bold text-lg'>P</span>
+    <footer className="border-t border-border/50 bg-background">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-display font-bold text-sm">PT</span>
               </div>
-              <p className='text-white text-[20px] font-semibold cursor-pointer flex'>
-                Piyush <span className='text-[#39FF14] ml-1'>Tamoli</span>
-              </p>
-            </motion.div>
-            <p className="text-[#A9A9A9] mb-6">
-              First-year engineering student passionate about creating innovative solutions through
-              technology, specializing in AI, web development, and mobile applications.
+              <span className="font-display font-semibold text-foreground text-lg tracking-tight">
+                Piyush<span className="text-primary ml-0.5">.</span>
+              </span>
+            </div>
+            <p className="text-muted-foreground text-sm leading-relaxed mb-5 max-w-xs">
+              Engineering student building innovative solutions through AI, web development, and modern technology.
             </p>
-            <div className="flex gap-4">
-              <motion.a
-                whileHover={{ scale: 1.2, y: -5 }}
-                whileTap={{ scale: 0.9 }}
-                href="https://github.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-[#39FF14]"
-              >
-                <Github size={22} />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2, y: -5 }}
-                whileTap={{ scale: 0.9 }}
-                href="https://linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-[#39FF14]"
-              >
-                <Linkedin size={22} />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.2, y: -5 }}
-                whileTap={{ scale: 0.9 }}
-                href="mailto:example@example.com"
-                className="text-white hover:text-[#39FF14]"
-              >
-                <Mail size={22} />
-              </motion.a>
+            <div className="flex gap-3">
+              {[
+                { icon: Github, href: 'https://github.com/Piyush105454' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/piyush-tamoli-751b2125a' },
+                { icon: Mail, href: 'mailto:piyushtamoli105454@gmail.com' },
+              ].map(({ icon: Icon, href }) => (
+                <a
+                  key={href}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-all"
+                >
+                  <Icon size={18} />
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="md:w-1/4">
-            <h3 className="text-white font-bold text-xl mb-6">Quick Links</h3>
-            <ul className="space-y-3">
+          {/* Quick Links */}
+          <div>
+            <h3 className="font-display font-semibold text-foreground text-sm mb-4">Navigation</h3>
+            <ul className="space-y-2.5">
               {navLinks.map((link) => (
-                <motion.li
-                  whileHover={{ x: 5, color: '#39FF14' }}
-                  key={link.id}
-                  className="flex items-center gap-2 text-[#A9A9A9] hover:text-[#39FF14] cursor-pointer"
-                  onClick={() => {
-                    const element = document.getElementById(link.id);
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  <ChevronRight size={16} />
-                  <span>{link.title}</span>
-                </motion.li>
+                <li key={link.id}>
+                  <button
+                    onClick={() => document.getElementById(link.id)?.scrollIntoView({ behavior: 'smooth' })}
+                    className="text-muted-foreground text-sm hover:text-foreground transition-colors"
+                  >
+                    {link.title}
+                  </button>
+                </li>
               ))}
             </ul>
           </div>
 
-          <div className="md:w-1/3">
-            <h3 className="text-white font-bold text-xl mb-6">Get In Touch</h3>
-            <div className="space-y-3 text-[#A9A9A9]">
-              <p>Bhopal, Madhya pradesh, India</p>
-              <p>piyushtamoli9@example.com</p>
-              
+          {/* Contact */}
+          <div>
+            <h3 className="font-display font-semibold text-foreground text-sm mb-4">Contact</h3>
+            <div className="space-y-2.5 text-sm text-muted-foreground">
+              <p>Bhopal, Madhya Pradesh, India</p>
+              <a href="mailto:piyushtamoli105454@gmail.com" className="block hover:text-foreground transition-colors">
+                piyushtamoli105454@gmail.com
+              </a>
             </div>
           </div>
         </div>
 
-        <div className="border-t border-[#1a1a2e] pt-8 mt-8 text-center text-[#A9A9A9]">
-          <p>© {new Date().getFullYear()} Piyush Tamoli. All Rights Reserved.</p>
-          <p className="mt-2 text-sm">Designed with passion and code.</p>
+        <div className="pt-8 border-t border-border/50 text-center">
+          <p className="text-muted-foreground text-xs">
+            © {new Date().getFullYear()} Piyush Tamoli. Crafted with passion.
+          </p>
         </div>
       </div>
     </footer>

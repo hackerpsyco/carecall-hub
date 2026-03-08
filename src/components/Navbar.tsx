@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X, Download } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 import { navLinks } from '../constants';
 
 const Navbar: React.FC = () => {
@@ -9,158 +9,121 @@ const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
-
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navbarVariants = {
-    hidden: { opacity: 0, y: -50 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { 
-        type: 'spring', 
-        stiffness: 120, 
-        damping: 20 
-      } 
-    }
-  };
-
-  const menuVariants = {
-    closed: { 
-      opacity: 0, 
-      scale: 0.95,
-      transition: { 
-        duration: 0.2 
-      } 
-    },
-    open: { 
-      opacity: 1, 
-      scale: 1,
-      transition: { 
-        duration: 0.2 
-      } 
-    }
-  };
-
   return (
     <motion.nav
-      variants={navbarVariants}
-      initial="hidden"
-      animate="visible"
-      className={`sm:px-16 px-6 w-full flex items-center py-5 fixed top-0 z-20 ${
-        scrolled ? 'bg-[#0f0f2d]/90 backdrop-blur-sm' : 'bg-transparent'
+      initial={{ y: -100 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.6, ease: 'easeOut' }}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-background/80 backdrop-blur-xl border-b border-border/50 py-3'
+          : 'bg-transparent py-5'
       }`}
     >
-      <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
+      <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
         <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
           onClick={() => {
             setActive('');
-            window.scrollTo(0, 0);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className='flex items-center gap-2 cursor-pointer'
+          className="flex items-center gap-2.5 cursor-pointer"
         >
-          <div className='w-9 h-9 rounded-full bg-[#1E90FF] flex justify-center items-center'>
-            <span className='text-white font-bold text-lg'>P</span>
+          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+            <span className="text-primary-foreground font-display font-bold text-sm">PT</span>
           </div>
-          <p className='text-white text-[18px] font-semibold cursor-pointer flex'>
-            Piyush <span className='text-[#39FF14] ml-1'>Tamoli</span>
-          </p>
+          <span className="font-display font-semibold text-foreground text-lg tracking-tight">
+            Piyush<span className="text-primary ml-0.5">.</span>
+          </span>
         </motion.div>
 
-        <ul className='list-none hidden sm:flex flex-row gap-10'>
+        {/* Desktop nav */}
+        <ul className="hidden md:flex items-center gap-1">
           {navLinks.map((nav) => (
-            <motion.li
-              key={nav.id}
-              whileHover={{ scale: 1.1, color: '#39FF14' }}
-              whileTap={{ scale: 0.95 }}
-              className={`${
-                active === nav.title ? 'text-[#39FF14]' : 'text-white'
-              } hover:text-[#39FF14] text-[18px] font-medium cursor-pointer`}
-              onClick={() => {
-                setActive(nav.title);
-                const element = document.getElementById(nav.id);
-                if (element) {
-                  element.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              {nav.title}
-            </motion.li>
+            <li key={nav.id}>
+              <button
+                onClick={() => {
+                  setActive(nav.title);
+                  document.getElementById(nav.id)?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  active === nav.title
+                    ? 'text-primary bg-primary/10'
+                    : 'text-foreground-muted hover:text-foreground hover:bg-muted/50'
+                }`}
+              >
+                {nav.title}
+              </button>
+            </li>
           ))}
-          <motion.li
-            whileHover={{ scale: 1.1, backgroundColor: '#FF2E8D' }}
-            whileTap={{ scale: 0.95 }}
-            className='bg-[#1E90FF] px-4 py-2 rounded-full flex items-center gap-1 text-white cursor-pointer'
-          >
-            <span>Resume</span>
-            <Download size={16} />
-          </motion.li>
+          <li>
+            <a
+              href="https://drive.google.com/file/d/1dapNQSWmEozta4VCf0_zQzlSjFgDBtxH/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-2 px-5 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Resume
+            </a>
+          </li>
         </ul>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
-          <div
-            className='w-[28px] h-[28px] cursor-pointer flex items-center justify-center'
-            onClick={() => setToggle(!toggle)}
-          >
-            {toggle ? (
-              <X className='text-white' size={28} />
-            ) : (
-              <Menu className='text-white' size={28} />
-            )}
-          </div>
+        {/* Mobile toggle */}
+        <button
+          className="md:hidden text-foreground p-2"
+          onClick={() => setToggle(!toggle)}
+        >
+          {toggle ? <X size={24} /> : <Menu size={24} />}
+        </button>
 
-          <motion.div
-            variants={menuVariants}
-            initial="closed"
-            animate={toggle ? "open" : "closed"}
-            className={`${
-              !toggle ? 'hidden' : 'flex'
-            } p-6 bg-[#1a1a2e]/90 backdrop-blur-md absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
-          >
-            <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navLinks.map((nav) => (
-                <motion.li
-                  key={nav.id}
-                  whileHover={{ scale: 1.05, x: 5, color: '#39FF14' }}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? 'text-[#39FF14]' : 'text-white'
-                  }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                    const element = document.getElementById(nav.id);
-                    if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
-                >
-                  {nav.title}
-                </motion.li>
-              ))}
-              <motion.li
-                whileHover={{ scale: 1.05, backgroundColor: '#FF2E8D' }}
-                whileTap={{ scale: 0.95 }}
-                className='bg-[#1E90FF] px-4 py-2 rounded-full flex items-center gap-1 text-white w-full justify-center cursor-pointer'
-              >
-                <span>Resume</span>
-                <Download size={16} />
-              </motion.li>
-            </ul>
-          </motion.div>
-        </div>
+        {/* Mobile menu */}
+        <AnimatePresence>
+          {toggle && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.2 }}
+              className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border/50 p-6 md:hidden"
+            >
+              <ul className="flex flex-col gap-1">
+                {navLinks.map((nav) => (
+                  <li key={nav.id}>
+                    <button
+                      onClick={() => {
+                        setToggle(false);
+                        setActive(nav.title);
+                        document.getElementById(nav.id)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
+                      className={`w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                        active === nav.title
+                          ? 'text-primary bg-primary/10'
+                          : 'text-foreground-muted hover:text-foreground hover:bg-muted/50'
+                      }`}
+                    >
+                      {nav.title}
+                    </button>
+                  </li>
+                ))}
+                <li className="mt-2">
+                  <a
+                    href="https://drive.google.com/file/d/1dapNQSWmEozta4VCf0_zQzlSjFgDBtxH/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block text-center px-5 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-semibold"
+                  >
+                    Resume
+                  </a>
+                </li>
+              </ul>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </motion.nav>
   );

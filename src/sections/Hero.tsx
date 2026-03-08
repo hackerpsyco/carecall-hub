@@ -1,31 +1,46 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { Download, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import ParticlesBackground from '../components/ParticlesBackground';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className='relative w-full h-screen mx-auto'>
+    <section id="home" className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       <ParticlesBackground />
-      
-      <div className='absolute inset-0 flex flex-col items-center justify-center sm:px-16 px-6 max-w-7xl mx-auto'>
+
+      {/* Subtle gradient orbs */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-[120px] animate-glow-pulse" />
+      <div className="absolute bottom-1/4 -right-32 w-96 h-96 bg-accent/8 rounded-full blur-[120px] animate-glow-pulse" style={{ animationDelay: '1.5s' }} />
+
+      <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: -50 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className='flex flex-col items-center justify-center text-center'
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h1 className='text-white font-black lg:text-[80px] sm:text-[60px] xs:text-[50px] text-[40px] mt-2'>
-            Piyush <span className='text-[#1E90FF]'>Tamoli</span>
+          {/* Status badge */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 mb-8"
+          >
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-sm font-medium text-foreground-muted">Available for opportunities</span>
+          </motion.div>
+
+          <h1 className="font-display font-bold text-foreground text-5xl sm:text-6xl lg:text-7xl leading-[1.1] tracking-tight">
+            Hi, I'm{' '}
+            <span className="gradient-text">Piyush Tamoli</span>
           </h1>
-          
-          <div className='mt-4 text-[#F5F5F5] font-medium lg:text-[30px] sm:text-[26px] xs:text-[20px] text-[16px]'>
+
+          <div className="mt-5 text-foreground-muted text-xl sm:text-2xl font-display font-medium">
             <TypeAnimation
               sequence={[
                 'Engineering Student', 2000,
+                'Full-Stack Developer', 2000,
                 'AI Enthusiast', 2000,
-                'Web Developer', 2000,
                 'Problem Solver', 2000,
               ]}
               wrapper="span"
@@ -33,94 +48,67 @@ const Hero: React.FC = () => {
               repeat={Infinity}
             />
           </div>
-          
-          <p className='mt-6 text-[#A9A9A9] text-[18px] max-w-3xl text-center'>
-            Innovating through AI, Web Solutions.Engineering student with a 
-            passion for creating innovative technology solutions.
-          </p>
-          
-          <div className='mt-10 flex flex-wrap justify-center gap-5'>
-            <motion.button
-              whileHover={{ scale: 1.05, backgroundColor: '#39FF14', color: '#0f0f2d' }}
-              whileTap={{ scale: 0.95 }}
-              className='bg-[#1E90FF] text-white font-bold py-3 px-8 rounded-full flex items-center gap-2 shadow-[0_5px_15px_rgba(30,144,255,0.4)]'
-              onClick={() => {
-                const aboutSection = document.getElementById('about');
-                if (aboutSection) {
-                  aboutSection.scrollIntoView({ behavior: 'smooth' });
-                }
-              }}
-            >
-              Explore My Work
-            </motion.button>
-            
-<motion.a
-  href="https://drive.google.com/file/d/1dapNQSWmEozta4VCf0_zQzlSjFgDBtxH/view?usp=sharing"
-  download
-  target="_blank"
-  rel="noopener noreferrer"
-  whileHover={{ scale: 1.05, backgroundColor: '#FF2E8D' }}
-  whileTap={{ scale: 0.95 }}
-  className="bg-transparent text-white border-2 border-[#1E90FF] font-bold py-3 px-8 rounded-full flex items-center gap-2"
->
-  Download Resume
-  <Download size={18} />
-</motion.a>
 
+          <p className="mt-6 text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+            Building innovative web solutions & AI-powered applications.
+            Turning complex problems into elegant, user-friendly experiences.
+          </p>
+
+          {/* CTA */}
+          <div className="mt-10 flex flex-wrap justify-center gap-4">
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+              className="px-8 py-3.5 rounded-xl bg-primary text-primary-foreground font-semibold text-sm shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-shadow"
+            >
+              View My Work
+            </motion.button>
+            <motion.a
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              href="https://drive.google.com/file/d/1dapNQSWmEozta4VCf0_zQzlSjFgDBtxH/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 rounded-xl border border-border text-foreground font-semibold text-sm hover:bg-muted/50 transition-colors"
+            >
+              Download Resume
+            </motion.a>
           </div>
-          
-          <div className='mt-10 flex gap-6'>
-            <motion.a
-              whileHover={{ scale: 1.2, y: -5 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://github.com/Piyush105454"
-              target="_blank"
-              rel="noopener noreferrer"
-              className='bg-[#1a1a2e] p-3 rounded-full'
-            >
-              <Github className='text-white' size={24} />
-            </motion.a>
-            
-            <motion.a
-              whileHover={{ scale: 1.2, y: -5 }}
-              whileTap={{ scale: 0.9 }}
-              href="https://www.linkedin.com/in/piyush-tamoli-751b2125a"
-              target="_blank"
-              rel="noopener noreferrer"
-              className='bg-[#1a1a2e] p-3 rounded-full'
-            >
-              <Linkedin className='text-white' size={24} />
-            </motion.a>
-            
-            <motion.a
-              whileHover={{ scale: 1.2, y: -5 }}
-              whileTap={{ scale: 0.9 }}
-              href="mailto:piyushtamoli105454@gmail.com"
-              className='bg-[#1a1a2e] p-3 rounded-full'
-            >
-              <Mail className='text-white' size={24} />
-            </motion.a>
+
+          {/* Social links */}
+          <div className="mt-12 flex justify-center gap-3">
+            {[
+              { icon: Github, href: 'https://github.com/Piyush105454', label: 'GitHub' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/piyush-tamoli-751b2125a', label: 'LinkedIn' },
+              { icon: Mail, href: 'mailto:piyushtamoli105454@gmail.com', label: 'Email' },
+            ].map(({ icon: Icon, href, label }) => (
+              <motion.a
+                key={label}
+                whileHover={{ scale: 1.1, y: -2 }}
+                href={href}
+                target={label !== 'Email' ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                className="p-3 rounded-xl bg-muted/50 text-foreground-muted hover:text-foreground hover:bg-muted transition-all"
+                aria-label={label}
+              >
+                <Icon size={20} />
+              </motion.a>
+            ))}
           </div>
         </motion.div>
       </div>
-      
-      <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-        <a href='#about'>
-          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-[#1E90FF] flex justify-center items-start p-2'>
-            <motion.div
-              animate={{
-                y: [0, 24, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                repeatType: 'loop',
-              }}
-              className='w-3 h-3 rounded-full bg-[#39FF14]'
-            />
-          </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+      >
+        <a href="#about" className="text-foreground-muted hover:text-primary transition-colors">
+          <ArrowDown size={20} />
         </a>
-      </div>
+      </motion.div>
     </section>
   );
 };
