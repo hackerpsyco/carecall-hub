@@ -100,10 +100,18 @@ export const hackathons: HackathonAchievement[] = [
     title: "IIIT Bhopal Ideathon",
     date: "March 2025",
     description: "SwapEat is a web-based platform built using Django, featuring real-time location tracking and real time chat and api use for food detection.",
-    position: "2st Place",
+    position: "2nd Place",
     team: "Innov8ors",
   },
- 
+  {
+    id: 2,
+    title: "BIT N BUILD by GDG SOIT RGPV",
+    date: "2025",
+    description: "Competed in BIT N BUILD hackathon organized by Google Developer Groups On Campus - SOIT RGPV and secured 2nd Runner Up position.",
+    position: "2nd Runner Up",
+    team: "Piyush Tamoli",
+    image: "https://www.instagram.com/p/DUDznP6jNS9/",
+  },
 ];
 
 export const technologies: TechSkill[] = [
