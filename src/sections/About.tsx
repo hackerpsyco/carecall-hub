@@ -3,57 +3,70 @@ import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
 import { Code2, Lightbulb, GraduationCap } from 'lucide-react';
 
-const cards = [
+const whatIdo = [
   {
-    icon: <Code2 size={22} />,
+    icon: <Code2 size={20} />,
     title: 'Development',
-    content: 'Proficient in Python, JavaScript, React.js, Node.js and various AI/ML frameworks. Building production-ready applications.',
+    content: 'Html, css, Tailwind css, Javascript, React.js, Next.js, Node.js, Express.js, Django, Python',
   },
   {
-    icon: <Lightbulb size={22} />,
-    title: 'Innovation',
-    content: 'Creative approach to engineering, combining technical expertise with practical solutions for real-world problems.',
+    icon: <Lightbulb size={20} />,
+    title: 'AI & Innovation',
+    content: 'Machine Learning, Scikit-learn, FastAPI, AI-powered applications, Problem solving',
   },
   {
-    icon: <GraduationCap size={22} />,
+    icon: <GraduationCap size={20} />,
     title: 'Education',
-    content: 'Pursuing engineering with focus on CS and AI. Learning through hackathons, self-study, and collaborative projects.',
+    content: 'Engineering student with focus on CS and AI. Hackathons, self-study, and collaborative projects.',
   },
 ];
 
 const About: React.FC = () => {
   return (
     <>
-      <div className="mb-14">
-        <p className="text-xs font-mono tracking-[0.25em] uppercase text-foreground-muted mb-4">
-          About me
-        </p>
-        <h2 className="font-display text-foreground text-3xl sm:text-[2.75rem] leading-tight tracking-tight">
-          A small <span className="font-bold">Introduction</span>
-        </h2>
-        <p className="mt-6 text-foreground-muted text-base sm:text-lg leading-relaxed max-w-xl">
-          I'm an engineering student passionate about cutting-edge technology.
-          Fascinated by AI, web development, and creating applications that solve
-          real problems with elegant, user-friendly solutions.
-        </p>
-      </div>
+      <div className="grid lg:grid-cols-2 gap-16 items-start">
+        {/* Left side - intro */}
+        <div>
+          <p className="text-xs font-mono tracking-[0.25em] uppercase text-foreground-muted mb-4">
+            About me
+          </p>
+          <h2 className="font-display text-foreground text-3xl sm:text-[2.75rem] leading-tight tracking-tight mb-6">
+            A small <span className="font-bold">Introduction</span>
+          </h2>
+          <p className="text-foreground-muted text-base leading-relaxed">
+            This is Piyush Tamoli, engineering student from Bhopal, India. I'm a self-taught 
+            full-stack developer and AI enthusiast. I build innovative web solutions and love 
+            solving complex problems with elegant code.
+          </p>
+        </div>
 
-      <div className="grid md:grid-cols-3 gap-5">
-        {cards.map((card, i) => (
-          <motion.div
-            key={card.title}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.12, duration: 0.5 }}
-            className="rounded-2xl border border-border p-7 group hover:bg-foreground hover:border-foreground transition-all duration-400 cursor-default"
-          >
-            <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center mb-5 text-foreground group-hover:bg-background/20 group-hover:text-background transition-all duration-400">
-              {card.icon}
-            </div>
-            <h3 className="font-display font-semibold text-foreground text-base mb-2 group-hover:text-background transition-colors duration-400">{card.title}</h3>
-            <p className="text-foreground-muted text-sm leading-relaxed group-hover:text-background/70 transition-colors duration-400">{card.content}</p>
-          </motion.div>
-        ))}
+        {/* Right side - what I do */}
+        <div>
+          <p className="text-xs font-mono tracking-[0.25em] uppercase text-foreground-muted mb-6">
+            What I like to do
+          </p>
+          <div className="space-y-5">
+            {whatIdo.map((item, i) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+                className="group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center flex-shrink-0 text-foreground group-hover:bg-foreground group-hover:text-background transition-all duration-300">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="font-display font-semibold text-foreground text-sm mb-1">{item.title}</h3>
+                    <p className="text-foreground-muted text-[13px] leading-relaxed">{item.content}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </>
   );
