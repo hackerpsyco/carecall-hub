@@ -10,8 +10,16 @@ export const navLinks: NavItem[] = [
     title: "Who Am I?",
   },
   {
+    id: "services",
+    title: "Services",
+  },
+  {
     id: "projects",
     title: "My Work",
+  },
+  {
+    id: "content",
+    title: "Creator",
   },
   {
     id: "hackathons",

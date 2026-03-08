@@ -35,8 +35,8 @@ const About: React.FC = () => {
           </h2>
           <p className="text-foreground-muted text-base leading-relaxed">
             This is Piyush Tamoli, engineering student from Bhopal, India. I'm a self-taught 
-            full-stack developer and AI enthusiast. I build innovative web solutions and love 
-            solving complex problems with elegant code.
+            full-stack developer, AI automation expert, and content creator. I help businesses 
+            automate with AI and share insights on YouTube & Instagram.
           </p>
         </div>
 

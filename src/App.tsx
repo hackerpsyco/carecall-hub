@@ -3,6 +3,8 @@ import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Projects from './sections/Projects';
+import Services from './sections/Services';
+import ContentCreator from './sections/ContentCreator';
 import Hackathons from './sections/Hackathons';
 import TechStack from './sections/TechStack';
 import Contact from './sections/Contact';
@@ -48,7 +50,9 @@ const App: React.FC = () => {
           <main>
             <Hero />
             <About />
+            <Services />
             <Projects />
+            <ContentCreator />
             <Hackathons />
             <TechStack />
             <Contact />
