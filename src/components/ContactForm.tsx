@@ -3,119 +3,78 @@ import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 
 const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate form submission
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
       alert('Message sent successfully!');
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
-      });
+      setFormData({ name: '', email: '', message: '' });
     }, 1500);
   };
 
-  const formVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  };
-
-  const inputClasses = `bg-[#1a1a2e] border-[#1E90FF] border-2 py-3 px-6 text-white rounded-lg
-    w-full outline-none placeholder:text-gray-400 focus:border-[#39FF14] transition-all duration-300`;
+  const inputClasses =
+    'w-full bg-muted/50 border border-border rounded-xl px-4 py-3 text-foreground text-sm placeholder:text-muted-foreground outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200';
 
   return (
-    <motion.form
-      variants={formVariants}
-      initial="hidden"
-      animate="visible"
-      onSubmit={handleSubmit}
-      className="mt-12 flex flex-col gap-8 bg-[#0f0f2d]/60 backdrop-blur-md p-8 rounded-2xl shadow-[0_0_30px_rgba(30,144,255,0.15)]"
-    >
-      <motion.div variants={itemVariants}>
-        <label className="mb-2 block text-white font-medium">Your Name</label>
+    <form onSubmit={handleSubmit} className="glass-card rounded-2xl p-6 space-y-5">
+      <div>
+        <label className="block text-foreground text-sm font-medium mb-2">Name</label>
         <input
           type="text"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          placeholder="John Doe"
+          placeholder="Your name"
           className={inputClasses}
           required
         />
-      </motion.div>
+      </div>
 
-      <motion.div variants={itemVariants}>
-        <label className="mb-2 block text-white font-medium">Your Email</label>
+      <div>
+        <label className="block text-foreground text-sm font-medium mb-2">Email</label>
         <input
           type="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          placeholder="john@example.com"
+          placeholder="your@email.com"
           className={inputClasses}
           required
         />
-      </motion.div>
+      </div>
 
-      <motion.div variants={itemVariants}>
-        <label className="mb-2 block text-white font-medium">Your Message</label>
+      <div>
+        <label className="block text-foreground text-sm font-medium mb-2">Message</label>
         <textarea
           rows={4}
           name="message"
           value={formData.message}
           onChange={handleChange}
-          placeholder="Let me know how I can help you..."
+          placeholder="Tell me about your project..."
           className={`${inputClasses} resize-none`}
           required
         />
-      </motion.div>
+      </div>
 
       <motion.button
-        variants={itemVariants}
-        whileHover={{ scale: 1.05, backgroundColor: '#FF2E8D' }}
-        whileTap={{ scale: 0.95 }}
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
         type="submit"
-        className="bg-[#1E90FF] py-3 px-8 mb-2 rounded-xl text-white font-bold shadow-lg flex items-center justify-center gap-2 self-start"
         disabled={loading}
+        className="w-full py-3 rounded-xl bg-primary text-primary-foreground font-semibold text-sm flex items-center justify-center gap-2 hover:bg-primary/90 transition-colors disabled:opacity-60"
       >
         {loading ? 'Sending...' : 'Send Message'}
-        <Send size={18} />
+        <Send size={16} />
       </motion.button>
-    </motion.form>
+    </form>
   );
 };
 

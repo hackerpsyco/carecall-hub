@@ -1,121 +1,74 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Tilt } from "react-tilt";
-import { Project } from "../types";
-import { ExternalLink, Github } from "lucide-react";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Project } from '../types';
+import { ExternalLink, Github } from 'lucide-react';
 
-const ProjectCard: React.FC<{ project: Project; index: number }> = ({
-  project,
-  index,
-}) => {
-  const tiltOptions = {
-    max: 15,
-    scale: 1.03,
-    speed: 400,
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.08,
-        duration: 0.45,
-        ease: "easeOut",
-      },
-    }),
-  };
-
+const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
   return (
     <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      animate="visible"
-      custom={index}
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.5 }}
+      className="glass-card rounded-2xl overflow-hidden group hover:border-primary/30 transition-all duration-300"
     >
-      <Tilt options={tiltOptions} className="w-full">
-        <div className="bg-[#1a1a2e] rounded-2xl overflow-hidden shadow-lg hover:shadow-[0_0_25px_rgba(30,144,255,0.25)] transition-all duration-300 flex flex-col">
+      {/* Image */}
+      <div className="relative w-full h-48 overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-          {/* ✅ Clickable Image */}
-          <div
-            className="relative w-full h-[220px] group cursor-pointer"
-            onClick={() => project.link && window.open(project.link, "_blank")}
-          >
-            <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover"
-            />
-
-            {/* ✅ Hover Overlay */}
-            <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-              <motion.div
-                initial={{ scale: 0.8, opacity: 0 }}
-                whileHover={{ scale: 1 }}
-                animate={{ scale: 1, opacity: 1 }}
-                className="text-white text-sm bg-[#1E90FF] px-4 py-2 rounded-full"
-              >
-                View Project
-              </motion.div>
-            </div>
-
-            {/* ✅ Top-right Buttons */}
-            <div className="absolute top-3 right-3 flex gap-2">
-              {project.github && (
-                <motion.button
-                  whileHover={{ scale: 1.15 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-black/70 backdrop-blur-md p-2 rounded-full text-white hover:bg-black"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(project.github, "_blank");
-                  }}
-                >
-                  <Github size={18} />
-                </motion.button>
-              )}
-
-              {project.link && (
-                <motion.button
-                  whileHover={{ scale: 1.15 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-[#1E90FF] p-2 rounded-full text-white hover:bg-[#187bcd]"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    window.open(project.link, "_blank");
-                  }}
-                >
-                  <ExternalLink size={18} />
-                </motion.button>
-              )}
-            </div>
-          </div>
-
-          {/* ✅ Content */}
-          <div className="p-5 flex flex-col flex-grow">
-            <h3 className="text-white font-semibold text-lg">
-              {project.title}
-            </h3>
-
-            <p className="mt-2 text-gray-400 text-sm leading-relaxed">
-              {project.description}
-            </p>
-
-            {/* ✅ Tags */}
-            <div className="mt-4 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <span
-                  key={`${project.id}-${tag}`}
-                  className="text-xs bg-[#0f3460] text-[#39FF14] px-2 py-1 rounded-md"
-                >
-                  #{tag}
-                </span>
-              ))}
-            </div>
-          </div>
+        {/* Action buttons */}
+        <div className="absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg bg-background/80 backdrop-blur-sm text-foreground hover:bg-background transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Github size={16} />
+            </a>
+          )}
+          {project.link && (
+            <a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ExternalLink size={16} />
+            </a>
+          )}
         </div>
-      </Tilt>
+      </div>
+
+      {/* Content */}
+      <div className="p-5">
+        <h3 className="font-display font-semibold text-foreground text-base mb-2">
+          {project.title}
+        </h3>
+        <p className="text-muted-foreground text-sm leading-relaxed line-clamp-3 mb-4">
+          {project.description}
+        </p>
+
+        {/* Tags */}
+        <div className="flex flex-wrap gap-1.5">
+          {project.tags.map((tag) => (
+            <span
+              key={`${project.id}-${tag}`}
+              className="text-xs font-mono px-2.5 py-1 rounded-md bg-primary/10 text-primary"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
     </motion.div>
   );
 };

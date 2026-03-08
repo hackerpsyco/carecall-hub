@@ -1,78 +1,65 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWrapper';
-import { Cpu, Lightbulb, BookOpen } from 'lucide-react';
+import { Code2, Lightbulb, GraduationCap } from 'lucide-react';
 
-const AboutCard: React.FC<{ 
-  icon: React.ReactNode; 
-  title: string; 
-  content: string;
-  delay: number;
-}> = ({ icon, title, content, delay }) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.5 }}
-      className="flex flex-col md:flex-row gap-5 w-full bg-[#1a1a2e]/80 backdrop-blur-md p-6 rounded-2xl shadow-[0_0_15px_rgba(30,144,255,0.15)]"
-    >
-      <div className="flex items-center justify-center min-w-[80px] h-[80px] bg-[#1E90FF]/10 rounded-full">
-        {icon}
-      </div>
-      <div>
-        <h3 className="text-[22px] font-bold text-white">{title}</h3>
-        <p className="mt-2 text-[#A9A9A9] text-[16px] leading-relaxed">{content}</p>
-      </div>
-    </motion.div>
-  );
-};
+const cards = [
+  {
+    icon: <Code2 size={24} className="text-primary" />,
+    title: 'Technical Skills',
+    content: 'Proficient in Python, JavaScript, React.js, Node.js and various AI/ML frameworks. Continuously expanding my skillset through hands-on projects.',
+    accent: 'primary',
+  },
+  {
+    icon: <Lightbulb size={24} className="text-accent" />,
+    title: 'Innovation & Creativity',
+    content: 'I approach engineering challenges with a creative mindset, combining technical expertise with practical applications to build unique solutions.',
+    accent: 'accent',
+  },
+  {
+    icon: <GraduationCap size={24} className="text-highlight" />,
+    title: 'Education & Learning',
+    content: 'Pursuing engineering with a focus on CS and AI. Supplementing formal education with hackathons, self-learning, and collaborative projects.',
+    accent: 'highlight',
+  },
+];
 
 const About: React.FC = () => {
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        <p className="sm:text-[18px] text-[14px] text-[#1E90FF] uppercase tracking-wider">
+      <div className="mb-12">
+        <p className="text-sm font-mono font-medium text-primary tracking-wider uppercase mb-3">
           Introduction
         </p>
-        <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
+        <h2 className="font-display font-bold text-foreground text-3xl sm:text-4xl tracking-tight">
           Who Am I?
         </h2>
-        <p className="mt-4 text-[#A9A9A9] text-[17px] max-w-3xl leading-[30px]">
-          I'm engineering student with a passion for cutting-edge technology 
-          and problem-solving. As a budding engineer, I'm fascinated by AI, web development, 
-          and creating innovative applications. I love the challenge of turning complex 
+        <p className="mt-4 text-muted-foreground text-base leading-relaxed max-w-2xl">
+          I'm an engineering student with a passion for cutting-edge technology and problem-solving. 
+          Fascinated by AI, web development, and creating innovative applications that turn complex 
           problems into elegant, user-friendly solutions.
         </p>
-      </motion.div>
+      </div>
 
-      <div className="mt-20 flex flex-col gap-10">
-        <AboutCard
-          icon={<Cpu size={40} className="text-[#1E90FF]" />}
-          title="Technical Skills"
-          content="Proficient in Python, JavaScript, React.js, Node.js and various AI/ML frameworks. I continuously expand my skillset through hands-on projects and online courses to stay at the forefront of technology."
-          delay={0.2}
-        />
-        
-        <AboutCard
-          icon={<Lightbulb size={40} className="text-[#39FF14]" />}
-          title="Innovation & Creativity"
-          content="I approach engineering challenges with a creative mindset, looking for innovative solutions that combine technical expertise with practical applications. My projects demonstrate my ability to think outside the box."
-          delay={0.4}
-        />
-        
-        <AboutCard
-          icon={<BookOpen size={40} className="text-[#FF2E8D]" />}
-          title="Education & Learning"
-          content="Currently pursuing my engineering degree with a focus on computer science and AI. I supplement my formal education with self-directed learning, hackathons, and collaborative projects."
-          delay={0.6}
-        />
+      <div className="grid md:grid-cols-3 gap-5">
+        {cards.map((card, i) => (
+          <motion.div
+            key={card.title}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.15, duration: 0.5 }}
+            className="glass-card rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 group"
+          >
+            <div className="w-12 h-12 rounded-xl bg-muted/80 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+              {card.icon}
+            </div>
+            <h3 className="font-display font-semibold text-foreground text-lg mb-2">{card.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed">{card.content}</p>
+          </motion.div>
+        ))}
       </div>
     </>
   );
 };
 
-export default SectionWrapper(About, "about");
+export default SectionWrapper(About, 'about');

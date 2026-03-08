@@ -4,53 +4,49 @@ import SectionWrapper from '../components/SectionWrapper';
 import TechBadge from '../components/TechBadge';
 import { technologies } from '../constants';
 
-const TechStack: React.FC = () => {
-  const categories = [
-    { id: 'frontend', title: 'Frontend' },
-    { id: 'backend', title: 'Backend' },
-    { id: 'mobile', title: 'Mobile' },
-    { id: 'ai', title: 'AI & ML' },
-    { id: 'tools', title: 'Tools & DevOps' }
-  ];
+const categories = [
+  { id: 'frontend', title: 'Frontend', color: 'text-primary' },
+  { id: 'backend', title: 'Backend', color: 'text-accent' },
+  { id: 'ai', title: 'AI & ML', color: 'text-highlight' },
+  { id: 'tools', title: 'Tools & DevOps', color: 'text-foreground-muted' },
+];
 
+const TechStack: React.FC = () => {
   return (
     <>
-      <motion.div>
-        <p className="sm:text-[18px] text-[14px] text-[#1E90FF] uppercase tracking-wider">
+      <div className="mb-12">
+        <p className="text-sm font-mono font-medium text-primary tracking-wider uppercase mb-3">
           Technologies
         </p>
-        <h2 className="text-white font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]">
+        <h2 className="font-display font-bold text-foreground text-3xl sm:text-4xl tracking-tight">
           Tech Stack
         </h2>
-        <p className="mt-3 text-[#A9A9A9] text-[17px] max-w-3xl leading-[30px]">
-          I've worked with a variety of technologies in the web development, mobile app, and AI worlds.
-          From frontend frameworks to backend systems, from app development to AI models,
-          here's a comprehensive look at my technical toolkit.
+        <p className="mt-4 text-muted-foreground text-base leading-relaxed max-w-2xl">
+          A comprehensive look at the technologies I work with — from frontend 
+          frameworks to backend systems and AI tooling.
         </p>
-      </motion.div>
+      </div>
 
-      <div className="mt-16">
-        {categories.map((category) => (
-          <div key={category.id} className="mb-12">
-            <h3 className="text-[#39FF14] font-bold text-2xl mb-6">
-              {category.title}
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5">
-              {technologies
-                .filter((tech) => tech.category === category.id)
-                .map((tech, index) => (
-                  <TechBadge 
-                    key={tech.id} 
-                    skill={tech} 
-                    index={index} 
-                  />
+      <div className="space-y-12">
+        {categories.map((category) => {
+          const techs = technologies.filter((t) => t.category === category.id);
+          if (techs.length === 0) return null;
+          return (
+            <div key={category.id}>
+              <h3 className={`font-display font-semibold text-lg mb-5 ${category.color}`}>
+                {category.title}
+              </h3>
+              <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4">
+                {techs.map((tech, index) => (
+                  <TechBadge key={tech.id} skill={tech} index={index} />
                 ))}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </>
   );
 };
 
-export default SectionWrapper(TechStack, "techstack");
+export default SectionWrapper(TechStack, 'techstack');
