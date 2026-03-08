@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { HackathonAchievement } from '../types';
-import { Trophy } from 'lucide-react';
+import { Trophy, ExternalLink } from 'lucide-react';
 
 const HackathonCard: React.FC<{
   hackathon: HackathonAchievement;
@@ -38,6 +38,17 @@ const HackathonCard: React.FC<{
         </div>
 
         <p className="text-foreground-muted text-sm leading-relaxed">{hackathon.description}</p>
+
+        {hackathon.image && (
+          <a
+            href={hackathon.image}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 mt-3 text-xs font-mono text-foreground hover:text-foreground/70 transition-colors"
+          >
+            View Post <ExternalLink size={12} />
+          </a>
+        )}
       </div>
     </motion.div>
   );
