@@ -72,6 +72,9 @@ const Navbar: React.FC = () => {
               Resume
             </a>
           </li>
+          <li className="ml-2">
+            <ThemeToggle />
+          </li>
         </ul>
 
         {/* Mobile toggle */}
