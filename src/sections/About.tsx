@@ -7,17 +7,17 @@ const whatIdo = [
   {
     icon: <Code2 size={20} />,
     title: 'Development',
-    content: 'Html, css, Tailwind css, Javascript, React.js, Next.js, Node.js, Express.js, Django, Python',
+    content: 'Html, CSS, Tailwind CSS, Javascript, React.js, Next.js, Node.js, Express.js, Django, Python',
   },
   {
     icon: <Lightbulb size={20} />,
-    title: 'AI & Innovation',
-    content: 'Machine Learning, Scikit-learn, FastAPI, AI-powered applications, Problem solving',
+    title: 'AI & Automation',
+    content: 'AI-powered automation for businesses, chatbots, workflow automation, ML models, FastAPI, Scikit-learn',
   },
   {
     icon: <GraduationCap size={20} />,
-    title: 'Education',
-    content: 'Engineering student with focus on CS and AI. Hackathons, self-study, and collaborative projects.',
+    title: 'Content Creation',
+    content: 'YouTube & Instagram creator sharing AI tools, automation tutorials, and tech updates weekly.',
   },
 ];
 
