@@ -124,6 +124,9 @@ const Navbar: React.FC = () => {
                     Resume
                   </a>
                 </li>
+                <li className="mt-3 flex justify-center">
+                  <ThemeToggle />
+                </li>
               </ul>
             </motion.div>
           )}
